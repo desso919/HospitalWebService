@@ -45,5 +45,19 @@ namespace HospitalWebServiceApplication
         }
 
         #endregion
+
+        #region Hospital Services
+        public string GetHospital(long id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IMedicalClinicService>();
+            return service.GetHospital(id);
+        }
+
+        public string GetAllHospitals()
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IMedicalClinicService>();
+            return service.GetAllHospitals();
+        }
+        #endregion
     }
 }

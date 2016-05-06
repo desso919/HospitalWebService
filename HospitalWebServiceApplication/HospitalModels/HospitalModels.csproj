@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16A9892B-E9A0-41EB-A9C4-FDBD743DC273}</ProjectGuid>
+    <ProjectGuid>{7250EFBA-CA95-4FA0-AAA4-17F43D51CEA5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HospitalServicesImpl</RootNamespace>
-    <AssemblyName>HospitalServicesImpl</AssemblyName>
+    <RootNamespace>HospitalModels</RootNamespace>
+    <AssemblyName>HospitalModels</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,21 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,28 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementation\DatabaseConnection.cs" />
-    <Compile Include="Implementation\MedicalClinicService.cs" />
-    <Compile Include="Implementation\PatientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceModels\Hospital.cs" />
+    <Compile Include="ServiceModels\Patient.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HospitalDatabase\HospitalDatabase.csproj">
       <Project>{0996880a-a058-41f0-9a12-ed6cb571766f}</Project>
       <Name>HospitalDatabase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HospitalModels\HospitalModels.csproj">
-      <Project>{7250efba-ca95-4fa0-aaa4-17f43d51cea5}</Project>
-      <Name>HospitalModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HospitalServices\HospitalServices.csproj">
-      <Project>{7023b944-c3b9-4eb9-952d-a72f7fc9b26c}</Project>
-      <Name>HospitalServices</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

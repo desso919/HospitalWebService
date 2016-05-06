@@ -8,7 +8,7 @@ using System.Text;
 
 namespace HospitalWebServiceApplication
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IHospitalService" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IMedicalClinicService" in both code and config file together.
     [ServiceContract]
     public interface IHospitalService
     {
@@ -34,31 +34,28 @@ namespace HospitalWebServiceApplication
         #endregion
 
 
-        #region Patient Services
+        #region Hospital Services
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "hospital/{id}")]
+        string GetHospital(long id);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "hospitals")]
+        string GetAllHospitals();
+        #endregion
+
+
+        #region Doctor Services
 
         #endregion
 
 
-        #region Patient Services
+        #region History Services
 
         #endregion
 
 
-        #region Patient Services
-
-        #endregion
-
-
-        #region Patient Services
-
-        #endregion
-        #region Patient Services
-
-        #endregion
-        #region Patient Services
-
-        #endregion
-        #region Patient Services
+        #region Scheduled Visitations Services
 
         #endregion
     }

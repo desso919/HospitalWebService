@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using HospitalDatabase;
+using HospitalModels.ServiceModels;
+using AutoMapper;
 
 
 namespace HospitalServicesImpl.Implementation
@@ -14,26 +16,44 @@ namespace HospitalServicesImpl.Implementation
     {
         public string GetPatient(long patient_id)
         {
-            HospitalDatabaseEntities database = new HospitalDatabaseEntities();
-            var resultSet = database.Patients.Where(patient => patient.patient_Id == patient_id).ToList();
+            var resultSet = DatabaseConnection.getConnection().Patients.Where(patient => patient.patient_Id == patient_id).ToList();
 
             if (resultSet.Count == 1)
             {
-                return JsonConvert.SerializeObject(resultSet.FirstOrDefault());
+                HospitalModels.ServiceModels.Patient patient = new HospitalModels.ServiceModels.Patient();
+                patient.Map(resultSet.FirstOrDefault());
+                return JsonConvert.SerializeObject(patient);
             }
 
-            return "Tashak";
-            //return JsonConvert.SerializeObject(new { });           
+            return JsonConvert.SerializeObject(new { });           
         }
 
         public string GetPatientByUsernameAndPassword(string username, string password)
         {
-            throw new NotImplementedException();
+            var resultSet = DatabaseConnection.getConnection().Patients.Where(patient => patient.username.Equals(username) && patient.password.Equals(password)).ToList();
+
+            if (resultSet.Count == 1)
+            {
+                HospitalModels.ServiceModels.Patient patient = new HospitalModels.ServiceModels.Patient();
+                patient.Map(resultSet.FirstOrDefault());
+                return JsonConvert.SerializeObject(patient);
+            }
+
+            return JsonConvert.SerializeObject(new { });  
         }
 
         public string GetPatientByEGNAndPassword(string egn, string password)
         {
-            throw new NotImplementedException();
+            var resultSet = DatabaseConnection.getConnection().Patients.Where(patient => patient.egn.Equals(egn) && patient.password.Equals(password)).ToList();
+
+            if (resultSet.Count == 1)
+            {
+                HospitalModels.ServiceModels.Patient patient = new HospitalModels.ServiceModels.Patient();
+                patient.Map(resultSet.FirstOrDefault());
+                return JsonConvert.SerializeObject(patient);
+            }
+
+            return JsonConvert.SerializeObject(new { }); ;
         }
     }
 }
