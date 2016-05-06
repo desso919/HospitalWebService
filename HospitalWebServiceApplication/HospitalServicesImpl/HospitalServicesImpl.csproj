@@ -56,6 +56,7 @@
     <Compile Include="Implementation\AllergyService.cs" />
     <Compile Include="Implementation\DatabaseConnection.cs" />
     <Compile Include="Implementation\DoctorService.cs" />
+    <Compile Include="Implementation\HospitalUtill.cs" />
     <Compile Include="Implementation\MedicalClinicService.cs" />
     <Compile Include="Implementation\PatientHistoryService.cs" />
     <Compile Include="Implementation\PatientService.cs" />

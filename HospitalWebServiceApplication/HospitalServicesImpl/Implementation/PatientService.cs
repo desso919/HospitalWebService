@@ -55,5 +55,39 @@ namespace HospitalServicesImpl.Implementation
 
             return JsonConvert.SerializeObject(new { }); ;
         }
+
+
+        public bool AddNewPatient(long id, string gender, string username, string password, string first_name, string second_name, string last_name, string egn, int age, string birth_date)
+        {
+            HospitalDatabase.Patient patient = new HospitalDatabase.Patient();
+            HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
+            patient.patient_Id = id;
+            patient.username = username;
+            patient.password = password;
+            patient.first_name = first_name;
+            patient.second_name = second_name;
+            patient.last_name = last_name;
+            patient.egn = egn;
+            patient.age = age;
+            patient.birth_date = Convert.ToDateTime(birth_date);
+            if (gender.Equals("Male"))
+            {
+                patient.gender_id = 1;
+            }
+            else if (gender.Equals("Female")) 
+            {
+                 patient.gender_id = 2;
+            }
+
+            db.Patients.Add(patient);
+            int result = db.SaveChanges();
+
+            if (result == HospitalUtill.SUCCESSFULY_ADDED_ENTRY)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

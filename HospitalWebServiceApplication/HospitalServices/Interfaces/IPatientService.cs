@@ -13,5 +13,7 @@ namespace HospitalServices.Interfaces
         string GetPatientByUsernameAndPassword(string username, string password);
 
         string GetPatientByEGNAndPassword(string egn, string password);
+
+        bool AddNewPatient(long id, string gender, string username, string password, string first_name, string second_name, string last_name, string egn, int age, string birth_date);
     }
 }

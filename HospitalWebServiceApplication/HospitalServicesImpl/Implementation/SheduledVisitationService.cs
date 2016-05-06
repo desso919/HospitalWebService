@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace HospitalServicesImpl.Implementation
 {
     public class SheduledVisitationService : ISheduledVisitationService
-    {
+    {   
         public string GetVisitation(long id)
         {
             var resultSet = DatabaseConnection.getConnection().Scheduled_visitations.Where(visitation => visitation.visitation_Id == id).ToList();
@@ -41,9 +41,27 @@ namespace HospitalServicesImpl.Implementation
             return JsonConvert.SerializeObject(new { });
         }
 
-        public bool AddNewVisitation(long id, long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description)
+        public bool AddNewVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
         {
-            throw new NotImplementedException();
+            HospitalDatabase.Scheduled_visitations visitation = new HospitalDatabase.Scheduled_visitations();
+            HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
+            visitation.visitation_Id = id;
+            visitation.patient_Id = patient_id;
+            visitation.hospital_Id = hospital_id;
+            visitation.doctor_Id = doctor_id;
+            visitation.plan_date = Convert.ToDateTime(date);
+            visitation.reson = reason;
+            visitation.description = description;
+         
+            db.Scheduled_visitations.Add(visitation);
+            int result = db.SaveChanges();
+
+            if (result == HospitalUtill.SUCCESSFULY_ADDED_ENTRY)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
