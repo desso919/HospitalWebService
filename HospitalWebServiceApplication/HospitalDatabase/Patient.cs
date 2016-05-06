@@ -31,7 +31,7 @@ namespace HospitalDatabase
         public string last_name { get; set; }
         public string egn { get; set; }
         public int age { get; set; }
-        public Nullable<System.DateTime> birth_date { get; set; }
+        public DateTime? birth_date { get; set; }
         public int gender_id { get; set; }
     
         public virtual Gender Gender { get; set; }

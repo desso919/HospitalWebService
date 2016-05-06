@@ -39,10 +39,10 @@ namespace HospitalWebServiceApplication
             return service.GetPatientByEGNAndPassword(egn, password);
         }
 
-        public bool AddNewPatient(long id, string gender, string username, string password, string first_name, string second_name, string last_name, string egn, int age, string birth_date)
+        public bool AddNewPatient(string username, string password, string first_name, string second_name, string last_name, string egn, string gender, int age, string birth_date)
         {
             var service = BootNinjectConfiguration.Kernel.Get<IPatientService>();
-            return service.AddNewPatient(id, gender, username, password, first_name, second_name, last_name, egn, age, birth_date);
+            return service.AddNewPatient(username, password, first_name, second_name, last_name, egn, gender, age, birth_date);
         }
 
         #endregion
@@ -108,10 +108,10 @@ namespace HospitalWebServiceApplication
             return service.GetHistoryByPatientId(patient_id);
         }
 
-        public bool AddNewHospitalRecord(long id, long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description)
+        public bool AddNewHospitalRecord(long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description)
         {
             var service = BootNinjectConfiguration.Kernel.Get<IPatientHistoryService>();
-            return service.AddNewHospitalRecord(id, patient_id, hospital_id, doctor_id, reason, diagnose, date, description);
+            return service.AddNewHospitalRecord(patient_id, hospital_id, doctor_id, reason, diagnose, date, description);
         }
 
         #endregion
@@ -129,10 +129,10 @@ namespace HospitalWebServiceApplication
             return service.GetVisitationByPatientID(patient_id);
         }
 
-        public bool AddNewVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
+        public bool AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
         {
             var service = BootNinjectConfiguration.Kernel.Get<ISheduledVisitationService>();
-            return service.AddNewVisitation(id, patient_id, hospital_id, doctor_id, date, reason, description);
+            return service.AddNewVisitation(patient_id, hospital_id, doctor_id, date, reason, description);
         }
 
         #endregion

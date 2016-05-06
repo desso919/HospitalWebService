@@ -41,11 +41,12 @@ namespace HospitalServicesImpl.Implementation
             return JsonConvert.SerializeObject(new { });
         }
 
-        public bool AddNewVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
+        public bool AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
         {
+            int visitationsCount = DatabaseConnection.getConnection().Scheduled_visitations.Count();
             HospitalDatabase.Scheduled_visitations visitation = new HospitalDatabase.Scheduled_visitations();
             HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
-            visitation.visitation_Id = id;
+            visitation.visitation_Id = ++visitationsCount;
             visitation.patient_Id = patient_id;
             visitation.hospital_Id = hospital_id;
             visitation.doctor_Id = doctor_id;

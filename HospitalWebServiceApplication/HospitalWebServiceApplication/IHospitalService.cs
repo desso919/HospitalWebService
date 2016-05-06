@@ -29,8 +29,8 @@ namespace HospitalWebServiceApplication
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "patient/{id}/{gender}/{username}/{password}/{first_name}/{second_name}/{last_name}/{egn}/{age}/{birth_date}")]
-        bool AddNewPatient(long id, string gender, string username, string password, string first_name, string second_name, string last_name, string egn, int age, string birth_date);
+            UriTemplate = "patient/{username}/{password}/{first_name}/{second_name}/{last_name}/{egn}/{gender}/{age}/{birth_date}")]
+        bool AddNewPatient(string username, string password, string first_name, string second_name, string last_name, string egn, string gender, int age, string birth_date);
         #endregion
 
 
@@ -84,7 +84,7 @@ namespace HospitalWebServiceApplication
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "record/{id}/{patient_id}/{hospital_id}/{doctor_id}/{reason}/{diagnose}/{date}/{description}")]
-        bool AddNewHospitalRecord(long id, long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description);
+        bool AddNewHospitalRecord(long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description);
 
         #endregion
 
@@ -101,7 +101,7 @@ namespace HospitalWebServiceApplication
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "visitation/{id}/{patient_id}/{hospital_id}/{doctor_id}/{date}/{reason}/{description}")]
-        bool AddNewVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
+        bool AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
         #endregion
 
 

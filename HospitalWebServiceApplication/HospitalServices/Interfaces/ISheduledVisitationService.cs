@@ -12,7 +12,7 @@ namespace HospitalServices.Interfaces
 
         string GetVisitationByPatientID(long patient_id);
 
-        Boolean AddNewVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
+        Boolean AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
 
     }
 }

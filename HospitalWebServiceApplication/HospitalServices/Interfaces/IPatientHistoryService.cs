@@ -12,6 +12,6 @@ namespace HospitalServices.Interfaces
 
         string GetHistoryByPatientId(long patient_id);
 
-        bool AddNewHospitalRecord(long id, long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description);
+        bool AddNewHospitalRecord(long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description);
     }
 }

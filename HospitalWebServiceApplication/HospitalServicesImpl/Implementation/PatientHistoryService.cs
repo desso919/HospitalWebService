@@ -45,11 +45,12 @@ namespace HospitalServicesImpl.Implementation
         }
 
 
-        public bool AddNewHospitalRecord(long id, long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description)
+        public bool AddNewHospitalRecord(long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description)
         {
+            int historiesCount = DatabaseConnection.getConnection().Scheduled_visitations.Count();
             HospitalDatabase.History history = new HospitalDatabase.History();
             HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
-            history.history_Id = id;
+            history.history_Id = ++historiesCount;
             history.patient_Id = patient_id;
             history.hospital_Id = hospital_id;
             history.doctor_Id = doctor_id;         

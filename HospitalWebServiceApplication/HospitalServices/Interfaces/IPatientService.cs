@@ -14,6 +14,6 @@ namespace HospitalServices.Interfaces
 
         string GetPatientByEGNAndPassword(string egn, string password);
 
-        bool AddNewPatient(long id, string gender, string username, string password, string first_name, string second_name, string last_name, string egn, int age, string birth_date);
+        bool AddNewPatient(string username, string password, string first_name, string second_name, string last_name, string egn, string gender, int age, string birth_date);
     }
 }
