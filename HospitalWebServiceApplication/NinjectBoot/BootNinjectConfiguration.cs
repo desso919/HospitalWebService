@@ -22,6 +22,7 @@ namespace NinjectBoot
             Kernel.Bind<IAllergyService>().To<AllergyService>().InTransientScope();
             Kernel.Bind<IPatientHistoryService>().To<PatientHistoryService>().InTransientScope();
             Kernel.Bind<ISheduledVisitationService>().To<SheduledVisitationService>().InTransientScope();
+            Kernel.Bind<IRatingService>().To<RatingService>().InTransientScope();
         }
     }
 }

@@ -103,5 +103,22 @@ namespace HospitalWebServiceApplication
             UriTemplate = "visitation/{id}/{patient_id}/{hospital_id}/{doctor_id}/{date}/{reason}/{description}")]
         bool AddNewVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
         #endregion
+
+
+        #region Rating Services
+
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "rating/hospital/{patient_id}/{hospital_id}/{rating}")]
+        bool RatingHospital(long patient_id, long hospital_id, int rating);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "rating/doctor/{patient_id}/{hospital_id}/{rating}")]
+        bool RatingDoctor(long patient_id, long doctor_id, int rating);
+
+        #endregion
+
     }
 }

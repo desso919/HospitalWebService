@@ -136,5 +136,21 @@ namespace HospitalWebServiceApplication
         }
 
         #endregion
+
+        #region Rating Services
+
+        public bool RatingHospital(long patient_id, long hospital_id, int rating)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IRatingService>();
+            return service.RatingHospital(patient_id, hospital_id, rating);
+        }
+
+        public bool RatingDoctor(long patient_id, long doctor_id, int rating)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IRatingService>();
+            return service.RatingDoctor(patient_id, doctor_id, rating);
+        }
+        #endregion
+
     }
 }
