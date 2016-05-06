@@ -1,14 +1,15 @@
 ﻿using HospitalServices.Interfaces;
 using HospitalServicesImpl.Implementation;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ninject
+namespace NinjectBoot
 {
-    public static class NinjectConfig
+    public static class BootNinjectConfiguration
     {
         public static IKernel Kernel { get; private set; }
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using HospitalDatabase;
 
 
 namespace HospitalServicesImpl.Implementation
@@ -13,16 +14,16 @@ namespace HospitalServicesImpl.Implementation
     {
         public string GetPatient(long patient_id)
         {
-            //LocalHospitalDatabaseEntities database = new LocalHospitalDatabaseEntities();
-            //var resultSet = database.Patients.Where(patient => patient.patient_id == patient_id).ToList();
+            HospitalDatabaseEntities database = new HospitalDatabaseEntities();
+            var resultSet = database.Patients.Where(patient => patient.patient_Id == patient_id).ToList();
 
-            //if (resultSet.Count == 1)
-            //{
-            //    return JsonConvert.SerializeObject(resultSet.FirstOrDefault());
-            //}
+            if (resultSet.Count == 1)
+            {
+                return JsonConvert.SerializeObject(resultSet.FirstOrDefault());
+            }
 
-            //return JsonConvert.SerializeObject(new { });
-            return null;
+            return "Tashak";
+            //return JsonConvert.SerializeObject(new { });           
         }
 
         public string GetPatientByUsernameAndPassword(string username, string password)

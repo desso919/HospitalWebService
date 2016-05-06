@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D91E1CBE-5FBE-4278-9BDC-2BABD44E170F}</ProjectGuid>
+    <ProjectGuid>{8B09963C-7D01-456C-9C88-EC9202734137}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ninject</RootNamespace>
-    <AssemblyName>Ninject</AssemblyName>
+    <RootNamespace>NinjectBoot</RootNamespace>
+    <AssemblyName>NinjectBoot</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NinjectConfig.cs" />
+    <Compile Include="BootNinjectConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
