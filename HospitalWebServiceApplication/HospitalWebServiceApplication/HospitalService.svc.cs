@@ -59,5 +59,80 @@ namespace HospitalWebServiceApplication
             return service.GetAllHospitals();
         }
         #endregion
+
+        #region Doctor Services
+        public string GetDoctor(long id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IDoctorService>();
+            return service.GetDoctor(id);
+        }
+
+        public string GetDoctorsByHospitalId(long hospital_id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IDoctorService>();
+            return service.GetDoctorsByHospitalId(hospital_id);
+        }
+
+        public string GetAllDoctors()
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IDoctorService>();
+            return service.GetAllDoctors();
+        }
+        #endregion
+
+        #region Allergies Services
+        public string GetPatientAllergies(long patient_id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetAllAllergies()
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IAllergyService>();
+            return service.GetAllAllergies();
+        }
+        #endregion
+
+        #region Patient History Services
+
+        public string GetHospitalRecord(long id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IPatientHistoryService>();
+            return service.GetHistory(id);
+        }
+
+        public string GetHospitalRecordByPatientID(long patient_id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IPatientHistoryService>();
+            return service.GetHistoryByPatientId(patient_id);
+        }
+
+        public string AddNewHospitalRecord(long id, long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Sheduled Visitations Services
+        public string GetVisitation(long id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<ISheduledVisitationService>();
+            return service.GetVisitation(id);
+        }
+
+        public string GetVisitationByPatientID(long patient_id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<ISheduledVisitationService>();
+            return service.GetVisitationByPatientID(patient_id);
+        }
+
+        public bool AddNewVisitation(long id, long patient_id, long hospital_id, long doctor_id, string reason, string diagnose, string date, string description)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<ISheduledVisitationService>();
+            return service.AddNewVisitation(id, patient_id, hospital_id, doctor_id, reason, diagnose, date, description);
+        }
+
+        #endregion
     }
 }

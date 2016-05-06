@@ -46,8 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAllergyService.cs" />
+    <Compile Include="Interfaces\IDoctorService.cs" />
     <Compile Include="Interfaces\IMedicalClinicService.cs" />
+    <Compile Include="Interfaces\IPatientHistoryService.cs" />
     <Compile Include="Interfaces\IPatientService.cs" />
+    <Compile Include="Interfaces\ISheduledVisitationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

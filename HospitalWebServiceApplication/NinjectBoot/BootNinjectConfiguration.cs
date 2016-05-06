@@ -18,6 +18,10 @@ namespace NinjectBoot
             Kernel = new StandardKernel();
             Kernel.Bind<IPatientService>().To<PatientService>().InTransientScope();
             Kernel.Bind<IMedicalClinicService>().To<MedicalClinicService>().InTransientScope();
+            Kernel.Bind<IDoctorService>().To<DoctorService>().InTransientScope();
+            Kernel.Bind<IAllergyService>().To<AllergyService>().InTransientScope();
+            Kernel.Bind<IPatientHistoryService>().To<PatientHistoryService>().InTransientScope();
+            Kernel.Bind<ISheduledVisitationService>().To<SheduledVisitationService>().InTransientScope();
         }
     }
 }
