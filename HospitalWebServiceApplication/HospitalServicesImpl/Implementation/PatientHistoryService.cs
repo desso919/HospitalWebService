@@ -50,14 +50,17 @@ namespace HospitalServicesImpl.Implementation
             int historiesCount = DatabaseConnection.getConnection().Scheduled_visitations.Count();
             HospitalDatabase.History history = new HospitalDatabase.History();
             HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
-            history.history_Id = ++historiesCount;
+            history.history_Id = historiesCount + 1;
             history.patient_Id = patient_id;
             history.hospital_Id = hospital_id;
             history.doctor_Id = doctor_id;         
             history.reson = reason;
             history.dignose = diagnose;
             history.date = Convert.ToDateTime(date);
-            history.description = description;
+            if (history.description != null)
+            {
+                history.description = description;
+            }
 
             db.Histories.Add(history);
             int result = db.SaveChanges();

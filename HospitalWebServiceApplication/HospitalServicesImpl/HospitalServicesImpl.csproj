@@ -61,6 +61,7 @@
     <Compile Include="Implementation\PatientHistoryService.cs" />
     <Compile Include="Implementation\PatientService.cs" />
     <Compile Include="Implementation\RatingService.cs" />
+    <Compile Include="Implementation\RecommendedVisistationService.cs" />
     <Compile Include="Implementation\SheduledVisitationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

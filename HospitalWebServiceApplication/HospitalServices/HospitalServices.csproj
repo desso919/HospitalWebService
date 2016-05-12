@@ -52,6 +52,7 @@
     <Compile Include="Interfaces\IPatientHistoryService.cs" />
     <Compile Include="Interfaces\IPatientService.cs" />
     <Compile Include="Interfaces\IRatingService.cs" />
+    <Compile Include="Interfaces\IRecommendedVisistationService.cs" />
     <Compile Include="Interfaces\ISheduledVisitationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
