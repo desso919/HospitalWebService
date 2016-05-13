@@ -25,16 +25,15 @@ namespace HospitalDatabase
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Allergy> Allergies { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
-        public virtual DbSet<History> Histories { get; set; }
         public virtual DbSet<Hospital> Hospitals { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Recommended_Health_Hobbies> Recommended_Health_Hobbies { get; set; }
         public virtual DbSet<Recommended_Visitations> Recommended_Visitations { get; set; }
-        public virtual DbSet<Scheduled_visitations> Scheduled_visitations { get; set; }
         public virtual DbSet<Doctor_Rating> Doctor_Rating { get; set; }
         public virtual DbSet<Hospital_Rating> Hospital_Rating { get; set; }
+        public virtual DbSet<Template> Templates { get; set; }
+        public virtual DbSet<Visitation> Visitations { get; set; }
     }
 }

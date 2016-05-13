@@ -63,6 +63,7 @@
     <Compile Include="Implementation\RatingService.cs" />
     <Compile Include="Implementation\RecommendedVisistationService.cs" />
     <Compile Include="Implementation\SheduledVisitationService.cs" />
+    <Compile Include="Implementation\TemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

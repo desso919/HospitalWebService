@@ -23,6 +23,8 @@ namespace NinjectBoot
             Kernel.Bind<IPatientHistoryService>().To<PatientHistoryService>().InTransientScope();
             Kernel.Bind<ISheduledVisitationService>().To<SheduledVisitationService>().InTransientScope();
             Kernel.Bind<IRatingService>().To<RatingService>().InTransientScope();
+            Kernel.Bind<ITemplateService>().To<TemplateService>().InTransientScope();
+            Kernel.Bind<IRecommendedVisistationService>().To<RecommendedVisistationService>().InTransientScope();
         }
     }
 }

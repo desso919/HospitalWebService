@@ -8,5 +8,8 @@ namespace HospitalServices.Interfaces
 {
     public interface IRecommendedVisistationService
     {
+        string GetRecommendedVisitation(long id);
+
+        string GetRecommendedVisitationForPatient(int age);
     }
 }

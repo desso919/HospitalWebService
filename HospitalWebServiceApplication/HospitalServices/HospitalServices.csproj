@@ -54,6 +54,7 @@
     <Compile Include="Interfaces\IRatingService.cs" />
     <Compile Include="Interfaces\IRecommendedVisistationService.cs" />
     <Compile Include="Interfaces\ISheduledVisitationService.cs" />
+    <Compile Include="Interfaces\ITemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

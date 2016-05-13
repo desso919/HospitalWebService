@@ -63,9 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Allergy.cs">
-      <DependentUpon>LocalHospitalDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Doctor.cs">
       <DependentUpon>LocalHospitalDatabase.tt</DependentUpon>
     </Compile>
@@ -73,9 +70,6 @@
       <DependentUpon>LocalHospitalDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Gender.cs">
-      <DependentUpon>LocalHospitalDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="History.cs">
       <DependentUpon>LocalHospitalDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Hospital.cs">
@@ -109,7 +103,10 @@
     <Compile Include="Recommended_Visitations.cs">
       <DependentUpon>LocalHospitalDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Scheduled_visitations.cs">
+    <Compile Include="Template.cs">
+      <DependentUpon>LocalHospitalDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Visitation.cs">
       <DependentUpon>LocalHospitalDatabase.tt</DependentUpon>
     </Compile>
   </ItemGroup>

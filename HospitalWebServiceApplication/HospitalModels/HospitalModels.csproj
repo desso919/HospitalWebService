@@ -45,7 +45,10 @@
     <Compile Include="ServiceModels\Hospital.cs" />
     <Compile Include="ServiceModels\Patient.cs" />
     <Compile Include="ServiceModels\PatientHistory.cs" />
+    <Compile Include="ServiceModels\RecommendedVisitation.cs" />
     <Compile Include="ServiceModels\ScheduledVisitation.cs" />
+    <Compile Include="ServiceModels\Template.cs" />
+    <Compile Include="ServiceModels\Visitation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HospitalDatabase\HospitalDatabase.csproj">

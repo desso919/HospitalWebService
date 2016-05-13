@@ -16,11 +16,10 @@ namespace HospitalDatabase
     {
         public Patient()
         {
-            this.Histories = new HashSet<History>();
             this.Doctor_Rating = new HashSet<Doctor_Rating>();
             this.Hospital_Rating = new HashSet<Hospital_Rating>();
-            this.Scheduled_visitations = new HashSet<Scheduled_visitations>();
-            this.Allergies = new HashSet<Allergy>();
+            this.Templates = new HashSet<Template>();
+            this.Visitations = new HashSet<Visitation>();
         }
     
         public long patient_Id { get; set; }
@@ -30,15 +29,13 @@ namespace HospitalDatabase
         public string second_name { get; set; }
         public string last_name { get; set; }
         public string egn { get; set; }
-        public int age { get; set; }
-        public DateTime? birth_date { get; set; }
+        public Nullable<System.DateTime> birth_date { get; set; }
         public int gender_id { get; set; }
     
         public virtual Gender Gender { get; set; }
-        public virtual ICollection<History> Histories { get; set; }
         public virtual ICollection<Doctor_Rating> Doctor_Rating { get; set; }
         public virtual ICollection<Hospital_Rating> Hospital_Rating { get; set; }
-        public virtual ICollection<Scheduled_visitations> Scheduled_visitations { get; set; }
-        public virtual ICollection<Allergy> Allergies { get; set; }
+        public virtual ICollection<Template> Templates { get; set; }
+        public virtual ICollection<Visitation> Visitations { get; set; }
     }
 }

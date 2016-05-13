@@ -12,11 +12,11 @@ namespace HospitalServicesImpl.Implementation
     {   
         public string GetVisitation(long id)
         {
-            var resultSet = DatabaseConnection.getConnection().Scheduled_visitations.Where(visitation => visitation.visitation_Id == id).ToList();
+            var resultSet = DatabaseConnection.getConnection().Visitations.Where(visitation => visitation.id == id && visitation.isHistory == 0).ToList();
 
             if (resultSet.Count == 1)
             {
-                HospitalModels.ServiceModels.ScheduledVisitation visitation = new HospitalModels.ServiceModels.ScheduledVisitation();
+                HospitalModels.ServiceModels.Visitation visitation = new HospitalModels.ServiceModels.Visitation();
                 visitation.Map(resultSet.FirstOrDefault());
                 return JsonConvert.SerializeObject(visitation);
             }
@@ -25,37 +25,62 @@ namespace HospitalServicesImpl.Implementation
 
         public string GetVisitationByPatientID(long patient_id)
         {
-            List<HospitalModels.ServiceModels.ScheduledVisitation> histories = new List<HospitalModels.ServiceModels.ScheduledVisitation>();
-            var resultSet = DatabaseConnection.getConnection().Scheduled_visitations.Where(visitation => visitation.patient_Id == patient_id).ToList();
+            List<HospitalModels.ServiceModels.Visitation> visitations = new List<HospitalModels.ServiceModels.Visitation>();
+            var resultSet = DatabaseConnection.getConnection().Visitations.Where(visitation => visitation.patient_id == patient_id && visitation.isHistory == 0).ToList();
 
             if (resultSet.Count > 0)
             {
                 foreach (var visitation in resultSet)
                 {
-                    HospitalModels.ServiceModels.ScheduledVisitation temp = new HospitalModels.ServiceModels.ScheduledVisitation();
+                    HospitalModels.ServiceModels.Visitation temp = new HospitalModels.ServiceModels.Visitation();
                     temp.Map(visitation);
-                    histories.Add(temp);
+                    visitations.Add(temp);
                 }
-                return JsonConvert.SerializeObject(histories);
+                return JsonConvert.SerializeObject(visitations);
             }
             return JsonConvert.SerializeObject(new { });
         }
 
         public bool AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
         {
-            int visitationsCount = DatabaseConnection.getConnection().Scheduled_visitations.Count();
-            HospitalDatabase.Scheduled_visitations visitation = new HospitalDatabase.Scheduled_visitations();
+            int visitationsCount = DatabaseConnection.getConnection().Visitations.Count();
+            HospitalDatabase.Visitation visitation = new HospitalDatabase.Visitation();
             HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
-            visitation.visitation_Id = ++visitationsCount;
-            visitation.patient_Id = patient_id;
-            visitation.hospital_Id = hospital_id;
-            visitation.doctor_Id = doctor_id;
-            visitation.plan_date = Convert.ToDateTime(date);
+            visitation.id = ++visitationsCount;
+            visitation.patient_id = patient_id;
+            visitation.hospital_id = hospital_id;
+            visitation.doctor_id = doctor_id;
+            visitation.date = Convert.ToDateTime(date);
             visitation.reson = reason;
             visitation.description = description;
-         
-            db.Scheduled_visitations.Add(visitation);
+
+            db.Visitations.Add(visitation);
             int result = db.SaveChanges();
+
+            if (result == HospitalUtill.SUCCESSFULY_ADDED_ENTRY)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool MakeVisitationHistory(long id, long patient_id, string diagnose)
+        {
+            if(id <= 0 || diagnose == null) {
+                return false;
+            }
+
+            HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
+            var resultSet = db.Visitations.Find(id);
+            int result = 0;
+
+            if (resultSet != null)
+            {
+                resultSet.dignose = diagnose;
+                resultSet.isHistory = 1;
+                result = db.SaveChanges();
+            }
 
             if (result == HospitalUtill.SUCCESSFULY_ADDED_ENTRY)
             {

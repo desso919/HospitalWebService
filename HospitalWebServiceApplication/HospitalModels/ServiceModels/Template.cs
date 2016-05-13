@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalModels.ServiceModels
 {
-    public class PatientHistory
+    public class Template
     {
         public long Id { get; set; }
 
@@ -16,27 +16,18 @@ namespace HospitalModels.ServiceModels
 
         public long DoctorId { get; set; }
 
-        public int IsHistory { get; set; }
-
         public string Reason { get; set; }
-
-        public string Diagnose { get; set; }
 
         public string Description { get; set; }
 
-        public string Date { get; set; }
-
-        public void Map(HospitalDatabase.Visitation other)
+        public void Map(HospitalDatabase.Template other)
         {
             Id = other.id;
             PatientId = other.patient_id;
-            HospitalId = other.hospital_id;
-            DoctorId = other.doctor_id;
-            IsHistory = other.isHistory;
+            HospitalId = (long) other.hospital_id;
+            DoctorId = (long) other.doctor_id;
             Reason = other.reson;
-            Diagnose = other.dignose;
             Description = other.description;
-            Date = other.date.ToString();
         }
     }
 }

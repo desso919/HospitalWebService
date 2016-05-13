@@ -36,7 +36,6 @@ namespace HospitalModels.ServiceModels
             SecondName = other.second_name;
             LastName = other.last_name;
             EGN = other.egn;
-            Age = other.age;
             if (other.gender_id == 1) { Gender = "Male"; }
             else { Gender = "Female"; }
             if (other.birth_date.HasValue)

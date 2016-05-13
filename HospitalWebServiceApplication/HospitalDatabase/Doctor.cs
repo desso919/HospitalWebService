@@ -17,8 +17,8 @@ namespace HospitalDatabase
         public Doctor()
         {
             this.Doctor_Rating = new HashSet<Doctor_Rating>();
-            this.Histories = new HashSet<History>();
-            this.Scheduled_visitations = new HashSet<Scheduled_visitations>();
+            this.Templates = new HashSet<Template>();
+            this.Visitations = new HashSet<Visitation>();
         }
     
         public long doctor_Id { get; set; }
@@ -31,7 +31,7 @@ namespace HospitalDatabase
     
         public virtual Hospital Hospital { get; set; }
         public virtual ICollection<Doctor_Rating> Doctor_Rating { get; set; }
-        public virtual ICollection<History> Histories { get; set; }
-        public virtual ICollection<Scheduled_visitations> Scheduled_visitations { get; set; }
+        public virtual ICollection<Template> Templates { get; set; }
+        public virtual ICollection<Visitation> Visitations { get; set; }
     }
 }

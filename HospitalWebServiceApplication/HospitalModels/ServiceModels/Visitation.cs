@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalModels.ServiceModels
 {
-    public class PatientHistory
+    public class Visitation
     {
         public long Id { get; set; }
 

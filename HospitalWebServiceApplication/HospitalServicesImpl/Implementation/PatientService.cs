@@ -68,7 +68,6 @@ namespace HospitalServicesImpl.Implementation
             patient.first_name = first_name;           
             patient.last_name = last_name;
             patient.egn = egn;
-            patient.age = age;
 
             if (birth_date != null)
             {

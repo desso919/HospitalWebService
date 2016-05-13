@@ -12,16 +12,18 @@ namespace HospitalDatabase
     using System;
     using System.Collections.Generic;
     
-    public partial class Allergy
+    public partial class Template
     {
-        public Allergy()
-        {
-            this.Patients = new HashSet<Patient>();
-        }
+        public long id { get; set; }
+        public long patient_id { get; set; }
+        public Nullable<long> hospital_id { get; set; }
+        public Nullable<long> doctor_id { get; set; }
+        public string title { get; set; }
+        public string reson { get; set; }
+        public string description { get; set; }
     
-        public long allergy_id { get; set; }
-        public string allergy1 { get; set; }
-    
-        public virtual ICollection<Patient> Patients { get; set; }
+        public virtual Doctor Doctor { get; set; }
+        public virtual Hospital Hospital { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

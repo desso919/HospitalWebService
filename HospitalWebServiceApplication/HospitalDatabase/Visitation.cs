@@ -12,15 +12,16 @@ namespace HospitalDatabase
     using System;
     using System.Collections.Generic;
     
-    public partial class History
+    public partial class Visitation
     {
-        public long history_Id { get; set; }
-        public long patient_Id { get; set; }
-        public long hospital_Id { get; set; }
-        public long doctor_Id { get; set; }
+        public long id { get; set; }
+        public long patient_id { get; set; }
+        public long hospital_id { get; set; }
+        public long doctor_id { get; set; }
         public string reson { get; set; }
         public string dignose { get; set; }
         public System.DateTime date { get; set; }
+        public int isHistory { get; set; }
         public string description { get; set; }
     
         public virtual Doctor Doctor { get; set; }

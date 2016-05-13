@@ -129,6 +129,12 @@ namespace HospitalWebServiceApplication
             return service.GetVisitationByPatientID(patient_id);
         }
 
+        public bool MakeVisitationHistory(long id, long patient_id, string diagnose)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<ISheduledVisitationService>();
+            return service.MakeVisitationHistory(id, patient_id, diagnose);
+        }
+
         public bool AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
         {
             var service = BootNinjectConfiguration.Kernel.Get<ISheduledVisitationService>();
@@ -152,5 +158,42 @@ namespace HospitalWebServiceApplication
         }
         #endregion
 
+        #region Template Services
+
+        public string GetTemplate(long id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<ITemplateService>();
+            return service.GetTemplate(id);
+        }
+
+        public string GetAllPatientTemplates(long patient_id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<ITemplateService>();
+            return service.GetAllPatientTemplates(patient_id);
+        }
+
+        public bool AddTemplate(long patient_id, long hospital_id, long doctor_id, string title, string reason, string description)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<ITemplateService>();
+            return service.AddTemplate(patient_id, hospital_id, doctor_id, title, reason, description);
+        }
+
+        #endregion
+
+        #region Recommended Visitations Services
+
+        public string GetRecommendedVisitation(long id)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IRecommendedVisistationService>();
+            return service.GetRecommendedVisitation(id);
+        }
+
+        public string GetRecommendedVisitationForPatient(int age)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<IRecommendedVisistationService>();
+            return service.GetRecommendedVisitationForPatient(age);
+        }
+
+        #endregion
     }
 }

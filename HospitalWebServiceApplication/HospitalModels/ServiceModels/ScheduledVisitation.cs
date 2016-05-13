@@ -8,7 +8,7 @@ namespace HospitalModels.ServiceModels
 {
     public class ScheduledVisitation
     {
-        public long VisitationId { get; set; }
+        public long Id { get; set; }
 
         public long PatientId { get; set; }
 
@@ -22,15 +22,15 @@ namespace HospitalModels.ServiceModels
 
         public string Date { get; set; }
 
-        public void Map(HospitalDatabase.Scheduled_visitations other)
+        public void Map(HospitalDatabase.Visitation other)
         {
-            VisitationId = other.visitation_Id;
-            PatientId = other.patient_Id;
-            HospitalId = other.hospital_Id;
-            DoctorId = other.doctor_Id;
+            Id = other.id;
+            PatientId = other.patient_id;
+            HospitalId = other.hospital_id;
+            DoctorId = other.doctor_id;
             Reason = other.reson;
             Description = other.description;
-            Date = other.plan_date.ToShortDateString();
+            Date = other.date.ToString();
         }
     }
 }

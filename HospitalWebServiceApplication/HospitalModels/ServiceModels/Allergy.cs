@@ -10,11 +10,5 @@ namespace HospitalModels.ServiceModels
     {
         public long Allergy_Id { get; set; }
         public string Name { get; set; }
-
-        public void Map(HospitalDatabase.Allergy other)
-        {
-            Allergy_Id = other.allergy_id;
-            Name = other.allergy1;
-        }
     }
 }

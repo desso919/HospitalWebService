@@ -4,14 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HospitalDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Allergies">
-          <Key>
-            <PropertyRef Name="allergy_id" />
-          </Key>
-          <Property Name="allergy_id" Type="bigint" Nullable="false" />
-          <Property Name="allergy" Type="nvarchar" MaxLength="200" Nullable="false" />
-        </EntityType>
+    <Schema Namespace="HospitalDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITALWEBSERVICE\HOSPITALWEBSERVICEAPPLICATION\HOSPITALDATABASE\HOSPITALDATABASE.MDF.dbo.Doctor_Rating' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Doctor_Rating">
@@ -43,19 +36,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
           <Property Name="gender_Id" Type="int" Nullable="false" />
           <Property Name="gender" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="History">
-          <Key>
-            <PropertyRef Name="history_Id" />
-          </Key>
-          <Property Name="history_Id" Type="bigint" Nullable="false" />
-          <Property Name="patient_Id" Type="bigint" Nullable="false" />
-          <Property Name="hospital_Id" Type="bigint" Nullable="false" />
-          <Property Name="doctor_Id" Type="bigint" Nullable="false" />
-          <Property Name="reson" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="dignose" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="description" Type="nvarchar(max)" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITALWEBSERVICE\HOSPITALWEBSERVICEAPPLICATION\HOSPITALDATABASE\HOSPITALDATABASE.MDF.dbo.Hospital_Rating' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Hospital_Rating">
@@ -77,16 +57,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
           <Property Name="address" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="rating" Type="bigint" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITALWEBSERVICE\HOSPITALWEBSERVICEAPPLICATION\HOSPITALDATABASE\HOSPITALDATABASE.MDF.dbo.Patient_Allergies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Patient_Allergies">
-          <Key>
-            <PropertyRef Name="patient_Id" />
-            <PropertyRef Name="allergy_Id" />
-          </Key>
-          <Property Name="patient_Id" Type="bigint" Nullable="false" />
-          <Property Name="allergy_Id" Type="bigint" Nullable="false" />
-        </EntityType>
         <EntityType Name="Patients">
           <Key>
             <PropertyRef Name="patient_Id" />
@@ -98,7 +68,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
           <Property Name="second_name" Type="nvarchar" MaxLength="100" />
           <Property Name="last_name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="egn" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="age" Type="int" Nullable="false" />
           <Property Name="birth_date" Type="datetime" />
           <Property Name="gender_id" Type="int" Nullable="false" />
         </EntityType>
@@ -125,16 +94,30 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
           <Property Name="min_recommended_age" Type="int" />
           <Property Name="max_recommended_age" Type="int" />
         </EntityType>
-        <EntityType Name="Scheduled_visitations">
+        <EntityType Name="Template">
           <Key>
-            <PropertyRef Name="visitation_Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="visitation_Id" Type="bigint" Nullable="false" />
-          <Property Name="patient_Id" Type="bigint" Nullable="false" />
-          <Property Name="hospital_Id" Type="bigint" Nullable="false" />
-          <Property Name="doctor_Id" Type="bigint" Nullable="false" />
-          <Property Name="plan_date" Type="datetime" Nullable="false" />
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="patient_id" Type="bigint" Nullable="false" />
+          <Property Name="hospital_id" Type="bigint" />
+          <Property Name="doctor_id" Type="bigint" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="reson" Type="nvarchar" MaxLength="200" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Visitation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="patient_id" Type="bigint" Nullable="false" />
+          <Property Name="hospital_id" Type="bigint" Nullable="false" />
+          <Property Name="doctor_id" Type="bigint" Nullable="false" />
           <Property Name="reson" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="dignose" Type="nvarchar(max)" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="isHistory" Type="int" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_Doctor_Hospital_Id">
@@ -185,42 +168,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_History_Doctor_Id">
-          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Doctors">
-              <PropertyRef Name="doctor_Id" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="doctor_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_History_Hospital_Id">
-          <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hospitals">
-              <PropertyRef Name="hospital_id" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="hospital_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_History_Patient_Id">
-          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patients">
-              <PropertyRef Name="patient_Id" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="patient_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Hospita_Rating_Hospital_Id">
           <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="1" />
           <End Role="Hospital_Rating" Type="Self.Hospital_Rating" Multiplicity="*" />
@@ -245,76 +192,87 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Patient_Allergies_Allergy_Id">
-          <End Role="Allergies" Type="Self.Allergies" Multiplicity="1" />
-          <End Role="Patient_Allergies" Type="Self.Patient_Allergies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Allergies">
-              <PropertyRef Name="allergy_id" />
-            </Principal>
-            <Dependent Role="Patient_Allergies">
-              <PropertyRef Name="allergy_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Patient_Allergies_Patient_Id">
-          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
-          <End Role="Patient_Allergies" Type="Self.Patient_Allergies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patients">
-              <PropertyRef Name="patient_Id" />
-            </Principal>
-            <Dependent Role="Patient_Allergies">
-              <PropertyRef Name="patient_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Visitation_Doctor_Id">
-          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
-          <End Role="Scheduled_visitations" Type="Self.Scheduled_visitations" Multiplicity="*" />
+        <Association Name="FK_Template_Doctor_Id">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1" />
+          <End Role="Template" Type="Self.Template" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Doctors">
               <PropertyRef Name="doctor_Id" />
             </Principal>
-            <Dependent Role="Scheduled_visitations">
-              <PropertyRef Name="doctor_Id" />
+            <Dependent Role="Template">
+              <PropertyRef Name="doctor_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visitation_Hospital_Id">
-          <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="1" />
-          <End Role="Scheduled_visitations" Type="Self.Scheduled_visitations" Multiplicity="*" />
+        <Association Name="FK_Template_Hospital_Id">
+          <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="0..1" />
+          <End Role="Template" Type="Self.Template" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Hospitals">
               <PropertyRef Name="hospital_id" />
             </Principal>
-            <Dependent Role="Scheduled_visitations">
-              <PropertyRef Name="hospital_Id" />
+            <Dependent Role="Template">
+              <PropertyRef Name="hospital_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visitation_Patient_Id">
+        <Association Name="FK_Template_Patient_Id">
           <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
-          <End Role="Scheduled_visitations" Type="Self.Scheduled_visitations" Multiplicity="*" />
+          <End Role="Template" Type="Self.Template" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patients">
               <PropertyRef Name="patient_Id" />
             </Principal>
-            <Dependent Role="Scheduled_visitations">
+            <Dependent Role="Template">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visitation_Table_Doctor_Id">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Visitation" Type="Self.Visitation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="doctor_Id" />
+            </Principal>
+            <Dependent Role="Visitation">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visitation_Table_Hospital_Id">
+          <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="1" />
+          <End Role="Visitation" Type="Self.Visitation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospitals">
+              <PropertyRef Name="hospital_id" />
+            </Principal>
+            <Dependent Role="Visitation">
+              <PropertyRef Name="hospital_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visitation_Table_Patient_Id">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Visitation" Type="Self.Visitation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
               <PropertyRef Name="patient_Id" />
+            </Principal>
+            <Dependent Role="Visitation">
+              <PropertyRef Name="patient_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="HospitalDatabaseModelStoreContainer">
-          <EntitySet Name="Allergies" EntityType="Self.Allergies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hospitals" EntityType="Self.Hospitals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recommended_Health_Hobbies" EntityType="Self.Recommended_Health_Hobbies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recommended_Visitations" EntityType="Self.Recommended_Visitations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Scheduled_visitations" EntityType="Self.Scheduled_visitations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Template" EntityType="Self.Template" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visitation" EntityType="Self.Visitation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor_Rating" EntityType="Self.Doctor_Rating" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Doctor_Rating].[patient_Id] AS [patient_Id], 
@@ -328,12 +286,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
     [Hospital_Rating].[hospital_Id] AS [hospital_Id], 
     [Hospital_Rating].[rating] AS [rating]
     FROM [dbo].[Hospital_Rating] AS [Hospital_Rating]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Patient_Allergies" EntityType="Self.Patient_Allergies" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Patient_Allergies].[patient_Id] AS [patient_Id], 
-    [Patient_Allergies].[allergy_Id] AS [allergy_Id]
-    FROM [dbo].[Patient_Allergies] AS [Patient_Allergies]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Doctor_Hospital_Id" Association="Self.FK_Doctor_Hospital_Id">
             <End Role="Hospitals" EntitySet="Hospitals" />
@@ -351,18 +303,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Patients" EntitySet="Patients" />
           </AssociationSet>
-          <AssociationSet Name="FK_History_Doctor_Id" Association="Self.FK_History_Doctor_Id">
-            <End Role="Doctors" EntitySet="Doctors" />
-            <End Role="History" EntitySet="History" />
-          </AssociationSet>
-          <AssociationSet Name="FK_History_Hospital_Id" Association="Self.FK_History_Hospital_Id">
-            <End Role="Hospitals" EntitySet="Hospitals" />
-            <End Role="History" EntitySet="History" />
-          </AssociationSet>
-          <AssociationSet Name="FK_History_Patient_Id" Association="Self.FK_History_Patient_Id">
-            <End Role="Patients" EntitySet="Patients" />
-            <End Role="History" EntitySet="History" />
-          </AssociationSet>
           <AssociationSet Name="FK_Hospita_Rating_Hospital_Id" Association="Self.FK_Hospita_Rating_Hospital_Id">
             <End Role="Hospitals" EntitySet="Hospitals" />
             <End Role="Hospital_Rating" EntitySet="Hospital_Rating" />
@@ -371,40 +311,35 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
             <End Role="Patients" EntitySet="Patients" />
             <End Role="Hospital_Rating" EntitySet="Hospital_Rating" />
           </AssociationSet>
-          <AssociationSet Name="FK_Patient_Allergies_Allergy_Id" Association="Self.FK_Patient_Allergies_Allergy_Id">
-            <End Role="Allergies" EntitySet="Allergies" />
-            <End Role="Patient_Allergies" EntitySet="Patient_Allergies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Patient_Allergies_Patient_Id" Association="Self.FK_Patient_Allergies_Patient_Id">
-            <End Role="Patients" EntitySet="Patients" />
-            <End Role="Patient_Allergies" EntitySet="Patient_Allergies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Visitation_Doctor_Id" Association="Self.FK_Visitation_Doctor_Id">
+          <AssociationSet Name="FK_Template_Doctor_Id" Association="Self.FK_Template_Doctor_Id">
             <End Role="Doctors" EntitySet="Doctors" />
-            <End Role="Scheduled_visitations" EntitySet="Scheduled_visitations" />
+            <End Role="Template" EntitySet="Template" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visitation_Hospital_Id" Association="Self.FK_Visitation_Hospital_Id">
+          <AssociationSet Name="FK_Template_Hospital_Id" Association="Self.FK_Template_Hospital_Id">
             <End Role="Hospitals" EntitySet="Hospitals" />
-            <End Role="Scheduled_visitations" EntitySet="Scheduled_visitations" />
+            <End Role="Template" EntitySet="Template" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visitation_Patient_Id" Association="Self.FK_Visitation_Patient_Id">
+          <AssociationSet Name="FK_Template_Patient_Id" Association="Self.FK_Template_Patient_Id">
             <End Role="Patients" EntitySet="Patients" />
-            <End Role="Scheduled_visitations" EntitySet="Scheduled_visitations" />
+            <End Role="Template" EntitySet="Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visitation_Table_Doctor_Id" Association="Self.FK_Visitation_Table_Doctor_Id">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Visitation" EntitySet="Visitation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visitation_Table_Hospital_Id" Association="Self.FK_Visitation_Table_Hospital_Id">
+            <End Role="Hospitals" EntitySet="Hospitals" />
+            <End Role="Visitation" EntitySet="Visitation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visitation_Table_Patient_Id" Association="Self.FK_Visitation_Table_Patient_Id">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Visitation" EntitySet="Visitation" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HospitalDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Allergy">
-          <Key>
-            <PropertyRef Name="allergy_id" />
-          </Key>
-          <Property Name="allergy_id" Type="Int64" Nullable="false" />
-          <Property Name="allergy1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Patients" Relationship="Self.Patient_Allergies" FromRole="Allergies" ToRole="Patients" />
-        </EntityType>
         <EntityType Name="Doctor">
           <Key>
             <PropertyRef Name="doctor_Id" />
@@ -418,8 +353,8 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
           <Property Name="rating" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Hospital" Relationship="Self.FK_Doctor_Hospital_Id" FromRole="Doctors" ToRole="Hospitals" />
           <NavigationProperty Name="Doctor_Rating" Relationship="Self.FK_Doctor_Rating_Hospital_Id" FromRole="Doctors" ToRole="Doctor_Rating" />
-          <NavigationProperty Name="Histories" Relationship="Self.FK_History_Doctor_Id" FromRole="Doctors" ToRole="History" />
-          <NavigationProperty Name="Scheduled_visitations" Relationship="Self.FK_Visitation_Doctor_Id" FromRole="Doctors" ToRole="Scheduled_visitations" />
+          <NavigationProperty Name="Templates" Relationship="HospitalDatabaseModel.FK_Template_Doctor_Id" FromRole="Doctor" ToRole="Template" />
+          <NavigationProperty Name="Visitations" Relationship="HospitalDatabaseModel.FK_Visitation_Table_Doctor_Id" FromRole="Doctor" ToRole="Visitation" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -428,22 +363,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
           <Property Name="gender_Id" Type="Int32" Nullable="false" />
           <Property Name="gender1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Patients" Relationship="Self.FK_Gender_Id" FromRole="Gender" ToRole="Patients" />
-        </EntityType>
-        <EntityType Name="History">
-          <Key>
-            <PropertyRef Name="history_Id" />
-          </Key>
-          <Property Name="history_Id" Type="Int64" Nullable="false" />
-          <Property Name="patient_Id" Type="Int64" Nullable="false" />
-          <Property Name="hospital_Id" Type="Int64" Nullable="false" />
-          <Property Name="doctor_Id" Type="Int64" Nullable="false" />
-          <Property Name="reson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="dignose" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Doctor" Relationship="Self.FK_History_Doctor_Id" FromRole="History" ToRole="Doctors" />
-          <NavigationProperty Name="Hospital" Relationship="Self.FK_History_Hospital_Id" FromRole="History" ToRole="Hospitals" />
-          <NavigationProperty Name="Patient" Relationship="Self.FK_History_Patient_Id" FromRole="History" ToRole="Patients" />
         </EntityType>
         <EntityType Name="Hospital">
           <Key>
@@ -454,9 +373,9 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
           <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="rating" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctor_Hospital_Id" FromRole="Hospitals" ToRole="Doctors" />
-          <NavigationProperty Name="Histories" Relationship="Self.FK_History_Hospital_Id" FromRole="Hospitals" ToRole="History" />
           <NavigationProperty Name="Hospital_Rating" Relationship="Self.FK_Hospita_Rating_Hospital_Id" FromRole="Hospitals" ToRole="Hospital_Rating" />
-          <NavigationProperty Name="Scheduled_visitations" Relationship="Self.FK_Visitation_Hospital_Id" FromRole="Hospitals" ToRole="Scheduled_visitations" />
+          <NavigationProperty Name="Templates" Relationship="HospitalDatabaseModel.FK_Template_Hospital_Id" FromRole="Hospital" ToRole="Template" />
+          <NavigationProperty Name="Visitations" Relationship="HospitalDatabaseModel.FK_Visitation_Table_Hospital_Id" FromRole="Hospital" ToRole="Visitation" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -469,15 +388,13 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
           <Property Name="second_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="egn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="age" Type="Int32" Nullable="false" />
           <Property Name="birth_date" Type="DateTime" Precision="3" />
           <Property Name="gender_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_Gender_Id" FromRole="Patients" ToRole="Gender" />
-          <NavigationProperty Name="Histories" Relationship="Self.FK_History_Patient_Id" FromRole="Patients" ToRole="History" />
           <NavigationProperty Name="Doctor_Rating" Relationship="Self.FK_Doctor_Rating_Patient_Id" FromRole="Patients" ToRole="Doctor_Rating" />
           <NavigationProperty Name="Hospital_Rating" Relationship="Self.FK_Hospita_Rating_Patient_Id" FromRole="Patients" ToRole="Hospital_Rating" />
-          <NavigationProperty Name="Scheduled_visitations" Relationship="Self.FK_Visitation_Patient_Id" FromRole="Patients" ToRole="Scheduled_visitations" />
-          <NavigationProperty Name="Allergies" Relationship="Self.Patient_Allergies" FromRole="Patients" ToRole="Allergies" />
+          <NavigationProperty Name="Templates" Relationship="HospitalDatabaseModel.FK_Template_Patient_Id" FromRole="Patient" ToRole="Template" />
+          <NavigationProperty Name="Visitations" Relationship="HospitalDatabaseModel.FK_Visitation_Table_Patient_Id" FromRole="Patient" ToRole="Visitation" />
         </EntityType>
         <EntityType Name="Recommended_Health_Hobbies">
           <Key>
@@ -501,21 +418,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="min_recommended_age" Type="Int32" />
           <Property Name="max_recommended_age" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Scheduled_visitations">
-          <Key>
-            <PropertyRef Name="visitation_Id" />
-          </Key>
-          <Property Name="visitation_Id" Type="Int64" Nullable="false" />
-          <Property Name="patient_Id" Type="Int64" Nullable="false" />
-          <Property Name="hospital_Id" Type="Int64" Nullable="false" />
-          <Property Name="doctor_Id" Type="Int64" Nullable="false" />
-          <Property Name="plan_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="reson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Doctor" Relationship="Self.FK_Visitation_Doctor_Id" FromRole="Scheduled_visitations" ToRole="Doctors" />
-          <NavigationProperty Name="Hospital" Relationship="Self.FK_Visitation_Hospital_Id" FromRole="Scheduled_visitations" ToRole="Hospitals" />
-          <NavigationProperty Name="Patient" Relationship="Self.FK_Visitation_Patient_Id" FromRole="Scheduled_visitations" ToRole="Patients" />
         </EntityType>
         <EntityType Name="Doctor_Rating">
           <Key>
@@ -565,30 +467,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_History_Doctor_Id">
-          <End Role="Doctors" Type="Self.Doctor" Multiplicity="1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Doctors">
-              <PropertyRef Name="doctor_Id" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="doctor_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Visitation_Doctor_Id">
-          <End Role="Doctors" Type="Self.Doctor" Multiplicity="1" />
-          <End Role="Scheduled_visitations" Type="Self.Scheduled_visitations" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Doctors">
-              <PropertyRef Name="doctor_Id" />
-            </Principal>
-            <Dependent Role="Scheduled_visitations">
-              <PropertyRef Name="doctor_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Gender_Id">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
           <End Role="Patients" Type="Self.Patient" Multiplicity="*" />
@@ -601,30 +479,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_History_Hospital_Id">
-          <End Role="Hospitals" Type="Self.Hospital" Multiplicity="1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hospitals">
-              <PropertyRef Name="hospital_id" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="hospital_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_History_Patient_Id">
-          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
-          <End Role="History" Type="Self.History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patients">
-              <PropertyRef Name="patient_Id" />
-            </Principal>
-            <Dependent Role="History">
-              <PropertyRef Name="patient_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Hospita_Rating_Hospital_Id">
           <End Role="Hospitals" Type="Self.Hospital" Multiplicity="1" />
           <End Role="Hospital_Rating" Type="Self.Hospital_Rating" Multiplicity="*" />
@@ -633,18 +487,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
               <PropertyRef Name="hospital_id" />
             </Principal>
             <Dependent Role="Hospital_Rating">
-              <PropertyRef Name="hospital_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Visitation_Hospital_Id">
-          <End Role="Hospitals" Type="Self.Hospital" Multiplicity="1" />
-          <End Role="Scheduled_visitations" Type="Self.Scheduled_visitations" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hospitals">
-              <PropertyRef Name="hospital_id" />
-            </Principal>
-            <Dependent Role="Scheduled_visitations">
               <PropertyRef Name="hospital_Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -673,32 +515,13 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visitation_Patient_Id">
-          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
-          <End Role="Scheduled_visitations" Type="Self.Scheduled_visitations" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patients">
-              <PropertyRef Name="patient_Id" />
-            </Principal>
-            <Dependent Role="Scheduled_visitations">
-              <PropertyRef Name="patient_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Patient_Allergies">
-          <End Role="Allergies" Type="Self.Allergy" Multiplicity="*" />
-          <End Role="Patients" Type="Self.Patient" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="HospitalDatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Allergies" EntityType="Self.Allergy" />
           <EntitySet Name="Doctors" EntityType="Self.Doctor" />
           <EntitySet Name="Genders" EntityType="Self.Gender" />
-          <EntitySet Name="Histories" EntityType="Self.History" />
           <EntitySet Name="Hospitals" EntityType="Self.Hospital" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
           <EntitySet Name="Recommended_Health_Hobbies" EntityType="Self.Recommended_Health_Hobbies" />
           <EntitySet Name="Recommended_Visitations" EntityType="Self.Recommended_Visitations" />
-          <EntitySet Name="Scheduled_visitations" EntityType="Self.Scheduled_visitations" />
           <EntitySet Name="Doctor_Rating" EntityType="Self.Doctor_Rating" />
           <EntitySet Name="Hospital_Rating" EntityType="Self.Hospital_Rating" />
           <AssociationSet Name="FK_Doctor_Hospital_Id" Association="Self.FK_Doctor_Hospital_Id">
@@ -709,33 +532,13 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
             <End Role="Doctors" EntitySet="Doctors" />
             <End Role="Doctor_Rating" EntitySet="Doctor_Rating" />
           </AssociationSet>
-          <AssociationSet Name="FK_History_Doctor_Id" Association="Self.FK_History_Doctor_Id">
-            <End Role="Doctors" EntitySet="Doctors" />
-            <End Role="History" EntitySet="Histories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Visitation_Doctor_Id" Association="Self.FK_Visitation_Doctor_Id">
-            <End Role="Doctors" EntitySet="Doctors" />
-            <End Role="Scheduled_visitations" EntitySet="Scheduled_visitations" />
-          </AssociationSet>
           <AssociationSet Name="FK_Gender_Id" Association="Self.FK_Gender_Id">
             <End Role="Gender" EntitySet="Genders" />
             <End Role="Patients" EntitySet="Patients" />
           </AssociationSet>
-          <AssociationSet Name="FK_History_Hospital_Id" Association="Self.FK_History_Hospital_Id">
-            <End Role="Hospitals" EntitySet="Hospitals" />
-            <End Role="History" EntitySet="Histories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_History_Patient_Id" Association="Self.FK_History_Patient_Id">
-            <End Role="Patients" EntitySet="Patients" />
-            <End Role="History" EntitySet="Histories" />
-          </AssociationSet>
           <AssociationSet Name="FK_Hospita_Rating_Hospital_Id" Association="Self.FK_Hospita_Rating_Hospital_Id">
             <End Role="Hospitals" EntitySet="Hospitals" />
             <End Role="Hospital_Rating" EntitySet="Hospital_Rating" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Visitation_Hospital_Id" Association="Self.FK_Visitation_Hospital_Id">
-            <End Role="Hospitals" EntitySet="Hospitals" />
-            <End Role="Scheduled_visitations" EntitySet="Scheduled_visitations" />
           </AssociationSet>
           <AssociationSet Name="FK_Doctor_Rating_Patient_Id" Association="Self.FK_Doctor_Rating_Patient_Id">
             <End Role="Patients" EntitySet="Patients" />
@@ -745,29 +548,143 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
             <End Role="Patients" EntitySet="Patients" />
             <End Role="Hospital_Rating" EntitySet="Hospital_Rating" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visitation_Patient_Id" Association="Self.FK_Visitation_Patient_Id">
-            <End Role="Patients" EntitySet="Patients" />
-            <End Role="Scheduled_visitations" EntitySet="Scheduled_visitations" />
+          <EntitySet Name="Templates" EntityType="HospitalDatabaseModel.Template" />
+          <EntitySet Name="Visitations" EntityType="HospitalDatabaseModel.Visitation" />
+          <AssociationSet Name="FK_Template_Doctor_Id" Association="HospitalDatabaseModel.FK_Template_Doctor_Id">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Template" EntitySet="Templates" />
           </AssociationSet>
-          <AssociationSet Name="Patient_Allergies" Association="Self.Patient_Allergies">
-            <End Role="Allergies" EntitySet="Allergies" />
-            <End Role="Patients" EntitySet="Patients" />
+          <AssociationSet Name="FK_Visitation_Table_Doctor_Id" Association="HospitalDatabaseModel.FK_Visitation_Table_Doctor_Id">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Visitation" EntitySet="Visitations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Template_Hospital_Id" Association="HospitalDatabaseModel.FK_Template_Hospital_Id">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="Template" EntitySet="Templates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visitation_Table_Hospital_Id" Association="HospitalDatabaseModel.FK_Visitation_Table_Hospital_Id">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="Visitation" EntitySet="Visitations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Template_Patient_Id" Association="HospitalDatabaseModel.FK_Template_Patient_Id">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Template" EntitySet="Templates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visitation_Table_Patient_Id" Association="HospitalDatabaseModel.FK_Visitation_Table_Patient_Id">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Visitation" EntitySet="Visitations" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="patient_id" Type="Int64" Nullable="false" />
+          <Property Name="hospital_id" Type="Int64" />
+          <Property Name="doctor_id" Type="Int64" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="reson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doctor" Relationship="HospitalDatabaseModel.FK_Template_Doctor_Id" FromRole="Template" ToRole="Doctor" />
+          <NavigationProperty Name="Hospital" Relationship="HospitalDatabaseModel.FK_Template_Hospital_Id" FromRole="Template" ToRole="Hospital" />
+          <NavigationProperty Name="Patient" Relationship="HospitalDatabaseModel.FK_Template_Patient_Id" FromRole="Template" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Visitation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="patient_id" Type="Int64" Nullable="false" />
+          <Property Name="hospital_id" Type="Int64" Nullable="false" />
+          <Property Name="doctor_id" Type="Int64" Nullable="false" />
+          <Property Name="reson" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="dignose" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isHistory" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doctor" Relationship="HospitalDatabaseModel.FK_Visitation_Table_Doctor_Id" FromRole="Visitation" ToRole="Doctor" />
+          <NavigationProperty Name="Hospital" Relationship="HospitalDatabaseModel.FK_Visitation_Table_Hospital_Id" FromRole="Visitation" ToRole="Hospital" />
+          <NavigationProperty Name="Patient" Relationship="HospitalDatabaseModel.FK_Visitation_Table_Patient_Id" FromRole="Visitation" ToRole="Patient" />
+        </EntityType>
+        <Association Name="FK_Template_Doctor_Id">
+          <End Type="HospitalDatabaseModel.Doctor" Role="Doctor" Multiplicity="0..1" />
+          <End Type="HospitalDatabaseModel.Template" Role="Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="doctor_Id" />
+            </Principal>
+            <Dependent Role="Template">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visitation_Table_Doctor_Id">
+          <End Type="HospitalDatabaseModel.Doctor" Role="Doctor" Multiplicity="1" />
+          <End Type="HospitalDatabaseModel.Visitation" Role="Visitation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="doctor_Id" />
+            </Principal>
+            <Dependent Role="Visitation">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Template_Hospital_Id">
+          <End Type="HospitalDatabaseModel.Hospital" Role="Hospital" Multiplicity="0..1" />
+          <End Type="HospitalDatabaseModel.Template" Role="Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="hospital_id" />
+            </Principal>
+            <Dependent Role="Template">
+              <PropertyRef Name="hospital_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visitation_Table_Hospital_Id">
+          <End Type="HospitalDatabaseModel.Hospital" Role="Hospital" Multiplicity="1" />
+          <End Type="HospitalDatabaseModel.Visitation" Role="Visitation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="hospital_id" />
+            </Principal>
+            <Dependent Role="Visitation">
+              <PropertyRef Name="hospital_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Template_Patient_Id">
+          <End Type="HospitalDatabaseModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="HospitalDatabaseModel.Template" Role="Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="patient_Id" />
+            </Principal>
+            <Dependent Role="Template">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visitation_Table_Patient_Id">
+          <End Type="HospitalDatabaseModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="HospitalDatabaseModel.Visitation" Role="Visitation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="patient_Id" />
+            </Principal>
+            <Dependent Role="Visitation">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="HospitalDatabaseModelStoreContainer" CdmEntityContainer="HospitalDatabaseEntities">
-          <EntitySetMapping Name="Allergies">
-            <EntityTypeMapping TypeName="HospitalDatabaseModel.Allergy">
-              <MappingFragment StoreEntitySet="Allergies">
-                <ScalarProperty Name="allergy_id" ColumnName="allergy_id" />
-                <ScalarProperty Name="allergy1" ColumnName="allergy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Doctors">
             <EntityTypeMapping TypeName="HospitalDatabaseModel.Doctor">
               <MappingFragment StoreEntitySet="Doctors">
@@ -786,20 +703,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
               <MappingFragment StoreEntitySet="Gender">
                 <ScalarProperty Name="gender_Id" ColumnName="gender_Id" />
                 <ScalarProperty Name="gender1" ColumnName="gender" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Histories">
-            <EntityTypeMapping TypeName="HospitalDatabaseModel.History">
-              <MappingFragment StoreEntitySet="History">
-                <ScalarProperty Name="history_Id" ColumnName="history_Id" />
-                <ScalarProperty Name="patient_Id" ColumnName="patient_Id" />
-                <ScalarProperty Name="hospital_Id" ColumnName="hospital_Id" />
-                <ScalarProperty Name="doctor_Id" ColumnName="doctor_Id" />
-                <ScalarProperty Name="reson" ColumnName="reson" />
-                <ScalarProperty Name="dignose" ColumnName="dignose" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -823,7 +726,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
                 <ScalarProperty Name="second_name" ColumnName="second_name" />
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
                 <ScalarProperty Name="egn" ColumnName="egn" />
-                <ScalarProperty Name="age" ColumnName="age" />
                 <ScalarProperty Name="birth_date" ColumnName="birth_date" />
                 <ScalarProperty Name="gender_id" ColumnName="gender_id" />
               </MappingFragment>
@@ -854,19 +756,6 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Scheduled_visitations">
-            <EntityTypeMapping TypeName="HospitalDatabaseModel.Scheduled_visitations">
-              <MappingFragment StoreEntitySet="Scheduled_visitations">
-                <ScalarProperty Name="visitation_Id" ColumnName="visitation_Id" />
-                <ScalarProperty Name="patient_Id" ColumnName="patient_Id" />
-                <ScalarProperty Name="hospital_Id" ColumnName="hospital_Id" />
-                <ScalarProperty Name="doctor_Id" ColumnName="doctor_Id" />
-                <ScalarProperty Name="plan_date" ColumnName="plan_date" />
-                <ScalarProperty Name="reson" ColumnName="reson" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Doctor_Rating">
             <EntityTypeMapping TypeName="HospitalDatabaseModel.Doctor_Rating">
               <MappingFragment StoreEntitySet="Doctor_Rating">
@@ -885,15 +774,35 @@ warning 6002: The table/view 'C7E37F24EEED05CB5477F88BF0D463FA_BSERVICE\HOSPITAL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Patient_Allergies" TypeName="HospitalDatabaseModel.Patient_Allergies" StoreEntitySet="Patient_Allergies">
-            <EndProperty Name="Allergies">
-              <ScalarProperty Name="allergy_id" ColumnName="allergy_Id" />
-            </EndProperty>
-            <EndProperty Name="Patients">
-              <ScalarProperty Name="patient_Id" ColumnName="patient_Id" />
-            </EndProperty>
-          </AssociationSetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Templates">
+            <EntityTypeMapping TypeName="HospitalDatabaseModel.Template">
+              <MappingFragment StoreEntitySet="Template">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="reson" ColumnName="reson" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+                <ScalarProperty Name="hospital_id" ColumnName="hospital_id" />
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visitations">
+            <EntityTypeMapping TypeName="HospitalDatabaseModel.Visitation">
+              <MappingFragment StoreEntitySet="Visitation">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isHistory" ColumnName="isHistory" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="dignose" ColumnName="dignose" />
+                <ScalarProperty Name="reson" ColumnName="reson" />
+                <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+                <ScalarProperty Name="hospital_id" ColumnName="hospital_id" />
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

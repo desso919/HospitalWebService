@@ -98,9 +98,15 @@ namespace HospitalWebServiceApplication
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "visitation/patient/{patient_id}")]
         string GetVisitationByPatientID(long patient_id);
 
+
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "visitation/{id}/{patient_id}/{hospital_id}/{doctor_id}/{date}/{reason}/{description}")]
+            UriTemplate = "makeHistory/{id}/{patient_id}/{diagnose}")]
+        bool MakeVisitationHistory(long id, long patient_id, string diagnose);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "visitation/{patient_id}/{hospital_id}/{doctor_id}/{date}/{reason}/{description}")]
         bool AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
         #endregion
 
@@ -120,5 +126,38 @@ namespace HospitalWebServiceApplication
 
         #endregion
 
+
+        #region Template Services
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "template/{id}")]
+        string GetTemplate(long id);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "template/patient/{id}")]
+        string GetAllPatientTemplates(long patient_id);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "template/{patient_id}/{hospital_id}/{doctor_id}/{title}/{reason}/{description}")]
+        bool AddTemplate(long patient_id, long hospital_id, long doctor_id, string title, string reason, string description);
+
+        #endregion
+
+        #region Recommended Visitations Servcies
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "recommended/{id}")]
+        string GetRecommendedVisitation(long id);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "recommended/patient/{age}")]
+        string GetRecommendedVisitationForPatient(int age);
+
+        #endregion
     }
 }
