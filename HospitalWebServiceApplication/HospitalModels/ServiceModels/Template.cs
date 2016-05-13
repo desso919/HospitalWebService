@@ -18,6 +18,8 @@ namespace HospitalModels.ServiceModels
 
         public string Reason { get; set; }
 
+        public string Title { get; set; }
+
         public string Description { get; set; }
 
         public void Map(HospitalDatabase.Template other)
@@ -27,6 +29,7 @@ namespace HospitalModels.ServiceModels
             HospitalId = (long) other.hospital_id;
             DoctorId = (long) other.doctor_id;
             Reason = other.reson;
+            Title = other.title;
             Description = other.description;
         }
     }

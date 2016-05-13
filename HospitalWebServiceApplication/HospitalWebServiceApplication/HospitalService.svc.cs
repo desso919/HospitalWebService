@@ -129,10 +129,10 @@ namespace HospitalWebServiceApplication
             return service.GetVisitationByPatientID(patient_id);
         }
 
-        public bool MakeVisitationHistory(long id, long patient_id, string diagnose)
+        public bool MakeVisitationHistory(long id, string diagnose)
         {
             var service = BootNinjectConfiguration.Kernel.Get<ISheduledVisitationService>();
-            return service.MakeVisitationHistory(id, patient_id, diagnose);
+            return service.MakeVisitationHistory(id, diagnose);
         }
 
         public bool AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)

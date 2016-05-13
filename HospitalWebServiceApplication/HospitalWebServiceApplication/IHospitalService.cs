@@ -102,7 +102,7 @@ namespace HospitalWebServiceApplication
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "makeHistory/{id}/{patient_id}/{diagnose}")]
-        bool MakeVisitationHistory(long id, long patient_id, string diagnose);
+        bool MakeVisitationHistory(long id, string diagnose);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
@@ -145,6 +145,7 @@ namespace HospitalWebServiceApplication
         bool AddTemplate(long patient_id, long hospital_id, long doctor_id, string title, string reason, string description);
 
         #endregion
+
 
         #region Recommended Visitations Servcies
 

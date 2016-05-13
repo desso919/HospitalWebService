@@ -65,7 +65,7 @@ namespace HospitalServicesImpl.Implementation
             return false;
         }
 
-        public bool MakeVisitationHistory(long id, long patient_id, string diagnose)
+        public bool MakeVisitationHistory(long id, string diagnose)
         {
             if(id <= 0 || diagnose == null) {
                 return false;
