@@ -141,6 +141,12 @@ namespace HospitalWebServiceApplication
             return service.AddNewVisitation(patient_id, hospital_id, doctor_id, date, reason, description);
         }
 
+        public bool EditVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<ISheduledVisitationService>();
+            return service.EditVisitation(id, patient_id, hospital_id, doctor_id, date, reason, description);
+        }
+
         #endregion
 
         #region Rating Services
@@ -178,6 +184,12 @@ namespace HospitalWebServiceApplication
             return service.AddTemplate(patient_id, hospital_id, doctor_id, title, reason, description);
         }
 
+        public bool EditTemplate(long id, long hospital_id, long doctor_id, string title, string reason, string description)
+        {
+            var service = BootNinjectConfiguration.Kernel.Get<ITemplateService>();
+            return service.EditTemplate(id, hospital_id, doctor_id, title, reason, description);
+        }
+
         #endregion
 
         #region Recommended Visitations Services
@@ -195,5 +207,10 @@ namespace HospitalWebServiceApplication
         }
 
         #endregion
+
+
+
+
+      
     }
 }

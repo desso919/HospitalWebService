@@ -16,5 +16,7 @@ namespace HospitalServices.Interfaces
 
         Boolean AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
 
+        bool EditVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
+
     }
 }

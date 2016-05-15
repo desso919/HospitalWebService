@@ -14,5 +14,7 @@ namespace HospitalServices.Interfaces
 
         bool AddTemplate(long patient_id, long hospital_id, long doctor_id, string title, string reason, string description);
 
+        bool EditTemplate(long id, long hospital_id, long doctor_id, string title, string reason, string description);
+
     }
 }

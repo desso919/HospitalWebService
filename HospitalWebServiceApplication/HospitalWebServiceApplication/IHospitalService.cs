@@ -12,7 +12,6 @@ namespace HospitalWebServiceApplication
     [ServiceContract]
     public interface IHospitalService
     {
-
         #region Patient Services
 
         [OperationContract]
@@ -108,6 +107,12 @@ namespace HospitalWebServiceApplication
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "visitation/{patient_id}/{hospital_id}/{doctor_id}/{date}/{reason}/{description}")]
         bool AddNewVisitation(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "visitation/edit/{id}/{patient_id}/{hospital_id}/{doctor_id}/{date}/{reason}/{description}")]
+        bool EditVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
+
         #endregion
 
 
@@ -143,6 +148,11 @@ namespace HospitalWebServiceApplication
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "template/{patient_id}/{hospital_id}/{doctor_id}/{title}/{reason}/{description}")]
         bool AddTemplate(long patient_id, long hospital_id, long doctor_id, string title, string reason, string description);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "template/edit/{id}/{hospital_id}/{doctor_id}/{title}/{reason}/{description}")]
+        bool EditTemplate(long id, long hospital_id, long doctor_id, string title, string reason, string description);
 
         #endregion
 

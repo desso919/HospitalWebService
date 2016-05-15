@@ -64,5 +64,30 @@ namespace HospitalServicesImpl.Implementation
 
             return false;
         }
+
+
+        public bool EditTemplate(long id, long hospital_id, long doctor_id, string title, string reason, string description)
+        {
+            HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
+            var resultSet = db.Templates.Find(id);
+            int result = 0;
+
+            if (resultSet != null)
+            {
+                resultSet.hospital_id = hospital_id;
+                resultSet.doctor_id = doctor_id;
+                resultSet.title = title;
+                resultSet.reson = reason;
+                resultSet.description = description;
+                result = db.SaveChanges();
+            }
+
+            if (result == HospitalUtill.SUCCESSFULY_ADDED_ENTRY)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

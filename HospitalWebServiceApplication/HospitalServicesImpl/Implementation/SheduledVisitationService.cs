@@ -89,5 +89,30 @@ namespace HospitalServicesImpl.Implementation
 
             return false;
         }
+
+
+        public bool EditVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
+        {          
+            HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
+            var resultSet = db.Visitations.Find(id);
+            int result = 0;
+
+            if (resultSet != null)
+            {
+                resultSet.hospital_id = hospital_id;
+                resultSet.doctor_id = doctor_id;
+                resultSet.date = Convert.ToDateTime(date); ;
+                resultSet.reson = reason;
+                resultSet.description = description;
+                result = db.SaveChanges();
+            }
+
+            if (result == HospitalUtill.SUCCESSFULY_ADDED_ENTRY)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
