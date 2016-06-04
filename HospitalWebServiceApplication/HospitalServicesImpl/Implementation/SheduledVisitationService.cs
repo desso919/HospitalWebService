@@ -91,7 +91,7 @@ namespace HospitalServicesImpl.Implementation
         }
 
 
-        public bool EditVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
+        public bool EditVisitation(long id, long hospital_id, long doctor_id, string date, string reason, string description)
         {          
             HospitalDatabase.HospitalDatabaseEntities db = DatabaseConnection.getConnection();
             var resultSet = db.Visitations.Find(id);

@@ -111,7 +111,7 @@ namespace HospitalWebServiceApplication
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "visitation/edit/{id}/{patient_id}/{hospital_id}/{doctor_id}/{date}/{reason}/{description}")]
-        bool EditVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
+        bool EditVisitation(long id, long hospital_id, long doctor_id, string date, string reason, string description);
 
         #endregion
 

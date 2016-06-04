@@ -141,10 +141,10 @@ namespace HospitalWebServiceApplication
             return service.AddNewVisitation(patient_id, hospital_id, doctor_id, date, reason, description);
         }
 
-        public bool EditVisitation(long id, long patient_id, long hospital_id, long doctor_id, string date, string reason, string description)
+        public bool EditVisitation(long id, long hospital_id, long doctor_id, string date, string reason, string description)
         {
             var service = BootNinjectConfiguration.Kernel.Get<ISheduledVisitationService>();
-            return service.EditVisitation(id, patient_id, hospital_id, doctor_id, date, reason, description);
+            return service.EditVisitation(id, hospital_id, doctor_id, date, reason, description);
         }
 
         #endregion
